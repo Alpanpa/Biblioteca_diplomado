@@ -62,5 +62,4 @@ public class Lending {
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
-
 }
