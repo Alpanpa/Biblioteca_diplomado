@@ -12,33 +12,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.biblioteca.controller.UserController;
-import com.biblioteca.model.User;
+import com.biblioteca.controller.LendingController;
+import com.biblioteca.model.Lending;
 
 @RestController
-@RequestMapping("usuarios")
-public class UserRest {
+@RequestMapping("prestamos")
+
+public class LendingRest {
 
 	@Autowired
-	private UserController userController;
+	private LendingController lendingController;
 	
 	@PostMapping("/guardar")
-	public void saveUser(@RequestBody User user) {
-		userController.save(user);
+	public void saveLending(@RequestBody Lending lending) {
+		lendingController.save(lending);
 	}
 	
 	@GetMapping("/listar")
-	public List<User> List(){
-		return userController.findAll();
+	public List<Lending> List(){
+		return lendingController.findAll();
 	}
 	
 	@DeleteMapping("/eliminar/{id}")
 	public void delete(@PathVariable("id") Integer id) {
-		userController.deleteById(id);
+		lendingController.deleteById(id);
 	}
 
 	@PutMapping("/actualizar")
-	public void update(@RequestBody User user) {
-		userController.save(user);
+	public void update(@RequestBody Lending user) {
+		lendingController.save(user);
 	}
 }

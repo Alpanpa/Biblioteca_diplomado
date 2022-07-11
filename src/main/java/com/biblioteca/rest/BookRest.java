@@ -12,33 +12,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.biblioteca.controller.UserController;
-import com.biblioteca.model.User;
+import com.biblioteca.controller.BookController;
+import com.biblioteca.model.Book;
 
 @RestController
-@RequestMapping("usuarios")
-public class UserRest {
+@RequestMapping("libros")
 
+public class BookRest {
+	
 	@Autowired
-	private UserController userController;
+	private BookController bookController;
 	
 	@PostMapping("/guardar")
-	public void saveUser(@RequestBody User user) {
-		userController.save(user);
+	public void saveBook(@RequestBody Book book) {
+		bookController.save(book);
 	}
 	
 	@GetMapping("/listar")
-	public List<User> List(){
-		return userController.findAll();
+	public List<Book> List(){
+		return bookController.findAll();
 	}
 	
 	@DeleteMapping("/eliminar/{id}")
 	public void delete(@PathVariable("id") Integer id) {
-		userController.deleteById(id);
+		bookController.deleteById(id);
 	}
 
 	@PutMapping("/actualizar")
-	public void update(@RequestBody User user) {
-		userController.save(user);
+	public void update(@RequestBody Book user) {
+		bookController.save(user);
 	}
+
 }
